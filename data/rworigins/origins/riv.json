@@ -1,0 +1,18 @@
+{
+    "name": "The Rivulet",
+    "description": "Breathes underwater, and moves through the world with ease.",
+    "powers": [
+        "rworigins:scug",
+        "rworigins:morebreathing",
+        "rworigins:evasive",
+        "rworigins:lessfalling",
+        "rworigins:weak",
+        "origins:light_armor",
+        "origins:aquatic"
+    ],
+    "icon": {
+        "item": "minecraft:trident",
+        "amount": 1
+    },
+    "impact": 1
+}

@@ -1,0 +1,22 @@
+{
+    "name": "Brittle",
+    "description": "You have less maximum health and deal less damage.",
+    "type": "origins:multiple",
+    "lesshp": {
+        "type": "origins:attribute",
+        "modifier": {
+            "attribute": "generic.max_health",
+            "operation": "addition",
+            "value": -6
+        },
+        "update_health": true
+    },
+    "lessdmg": {
+        "type": "origins:modify_damage_dealt",
+        "modifier": {
+            "operation": "multiply_base",
+            "value": -0.25,
+            "name": "Origin"
+        }
+    }
+}

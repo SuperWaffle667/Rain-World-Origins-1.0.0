@@ -1,0 +1,20 @@
+{
+    "ascendactive": {
+        "subtitle": "Saint §kAscends",
+        "sounds": [
+            "rworigins:saitascendactive"
+        ]
+    },
+    "ascendpang": {
+        "subtitle": "Mob §kAscends",
+        "sounds": [
+            "rworigins:saitascendpang"
+        ]
+    },
+    "ascendcancel": {
+        "subtitle": "Saint Stops §kAscension",
+        "sounds": [
+            "rworigins:saitascendcancel"
+        ]
+    }
+}

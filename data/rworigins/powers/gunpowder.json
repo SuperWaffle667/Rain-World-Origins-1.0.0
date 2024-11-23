@@ -1,0 +1,52 @@
+{
+    "name": "Volatile Spit",
+    "description": "You can spend a small amount of food to gain gunpowder, which is used in some extra crafting recipes for explosives.",
+    "type": "origins:multiple",
+    "gainpowder": {
+        "condition": {
+            "type": "origins:food_level",
+            "comparison": ">",
+            "compare_to": 6
+        },
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:exhaust",
+                    "amount": 8
+                },
+                {
+                    "type": "origins:give",
+                    "stack": {
+                        "item": "minecraft:gunpowder",
+                        "amount": 1
+                    }
+                }
+            ]
+        },
+        "cooldown": 20,
+        "key": {
+            "key": "key.origins.secondary_active"
+        }
+    },
+    "firecharge": {
+        "type": "origins:recipe",
+        "recipe": {
+            "id": "rworigins:gunpowdercharge",
+            "group": "origins",
+            "type": "minecraft:crafting_shapeless",
+            "ingredients": [
+                {
+                    "item": "minecraft:gunpowder"
+                },
+                {
+                    "item": "minecraft:cobblestone"
+                }
+            ],
+            "result": {
+                "item": "minecraft:fire_charge"
+            }
+        }
+    }
+}

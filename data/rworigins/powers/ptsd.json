@@ -1,0 +1,30 @@
+{
+    "name": "PTSD",
+    "description": "You are weaker while in the rain.",
+    "type": "origins:multiple",
+    "less_speed": {
+        "condition": {
+            "type": "origins:in_rain"
+        },
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "attribute": "minecraft:generic.movement_speed",
+            "operation": "multiply_total",
+            "value": -0.5,
+            "name": "Rain"
+        },
+        "tick_rate": 20,
+        "update_health": true
+    },
+    "less_dmg": {
+        "condition": {
+            "type": "origins:in_rain"
+        },
+        "type": "origins:modify_damage_dealt",
+        "modifier": {
+            "operation": "multiply_total",
+            "value": -0.5,
+            "name": "Rain"
+        }
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "name": "Frail Body",
+    "description": "You have very limited health and cannot regenerate.",
+    "type": "origins:multiple",
+    "key0": {
+        "type": "origins:disable_regen"
+    },
+    "key1": {
+        "type": "origins:attribute",
+        "modifier": {
+            "attribute": "generic.max_health",
+            "operation": "addition",
+            "value": -14
+        },
+        "update_health": true
+    }
+}

@@ -1,0 +1,31 @@
+{
+    "description": "Something happens upon falling into the void...",
+    "hidden": true,
+    "type": "origins:multiple",
+    "key1": {
+        "type": "origins:action_when_damage_taken",
+        "damage_condition": {
+            "type": "origins:out_of_world"
+        },
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:grant_power",
+                    "power": "rworigins:ascend",
+                    "source": "Void"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute in minecraft:overworld run tp @s ~ 300 ~"
+                },
+                {
+                    "type": "origins:revoke_power",
+                    "power": "rworigins:ascendunlock",
+                    "source": "Void"
+                }
+            ]
+        },
+        "cooldown": 1
+    }
+}

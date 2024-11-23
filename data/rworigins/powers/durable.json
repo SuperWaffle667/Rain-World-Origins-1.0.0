@@ -1,0 +1,12 @@
+{
+    "name": "Durable",
+    "description": "You have more maximum health.",
+    "type": "origins:attribute",
+    "modifier": {
+        "attribute": "generic.max_health",
+        "operation": "addition",
+        "value": 4,
+        "name": "Origin"
+    },
+    "update_health": true
+}

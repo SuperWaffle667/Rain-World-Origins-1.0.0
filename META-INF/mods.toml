@@ -1,0 +1,25 @@
+modLoader="javafml"
+loaderVersion="[20,)"
+license="Unknown"
+logoFile="pack.png"
+logoBlur=false
+
+[[mods]]
+modId="rworigins"
+displayName="Rain World Origins"
+version="1.0.0"
+description='''
+
+'''
+[[dependencies.rworigins]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.20.0,1.20.1]"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.rworigins]]
+    modId="origins"
+    mandatory=true
+    versionRange="[0.1.0,)"
+    ordering="NONE"
+    side="BOTH"

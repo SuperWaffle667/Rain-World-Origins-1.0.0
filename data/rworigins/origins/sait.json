@@ -1,0 +1,19 @@
+{
+    "name": "The Saint",
+    "description": "Frail and armed with a long tongue. Your journey will be one of perfect enlightenment, but walking this path requires patience, caution, and complete attunement with the world.",
+    "powers": [
+        "rworigins:scug",
+        "rworigins:noweapons",
+        "rworigins:veryweak",
+        "rworigins:hypothermia",
+        "origins:vegetarian",
+        "origins:no_shield",
+        "rworigins:ascendunlock"
+    ],
+    "icon": {
+        "item": "minecraft:dandelion",
+        "amount": 1
+    },
+    "order": 1,
+    "impact": 3
+}

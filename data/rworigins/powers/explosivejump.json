@@ -1,0 +1,297 @@
+{
+    "name": "Explosive jump",
+    "description": "You can double jump, and press the primary action to damage and stun nearby mobs.\n\nBe careful not to overheat!",
+    "type": "origins:multiple",
+    "heat": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 70,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "rworigins:textures/gui/resource_bar.png",
+            "bar_index": 7
+        },
+        "max_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:damage",
+                    "amount": 99999,
+                    "source": {
+                        "name": "explosion",
+                        "bypasses_armor": true,
+                        "unblockable": true
+                    },
+                    "damage_type": "explosion"
+                },
+                {
+                    "type": "origins:spawn_particles",
+                    "particle": "minecraft:explosion_emitter",
+                    "count": 1
+                },
+                {
+                    "type": "origins:play_sound",
+                    "sound": "minecraft:entity.generic.explode",
+                    "volume": 1,
+                    "pitch": 1
+                },
+                {
+                    "type": "origins:area_of_effect",
+                    "radius": 3,
+                    "bientity_condition": {
+                        "type": "origins:target_condition",
+                        "condition": {
+                            "inverted": true,
+                            "type": "origins:entity_type",
+                            "entity_type": "minecraft:item"
+                        }
+                    },
+                    "bientity_action": {
+                        "type": "origins:damage",
+                        "amount": 10,
+                        "source": {
+                            "name": "explosion.player"
+                        },
+                        "damage_type": "explosion"
+                    }
+                }
+            ]
+        }
+    },
+    "decay": {
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_decaycd",
+            "comparison": "==",
+            "compare_to": 0
+        },
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "*:*_heat",
+            "change": -1,
+            "operation": "add"
+        }
+    },
+    "jump": {
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_djumps",
+                    "comparison": ">",
+                    "compare_to": 0
+                },
+                {
+                    "inverted": true,
+                    "type": "origins:on_block"
+                }
+            ]
+        },
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:add_velocity",
+                    "z": 1.5,
+                    "space": "local",
+                    "client": true,
+                    "server": true,
+                    "set": true
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_heat",
+                    "change": 10,
+                    "operation": "add"
+                },
+                {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:resource",
+                        "resource": "*:*_heat",
+                        "comparison": ">=",
+                        "compare_to": 50
+                    },
+                    "if_action": {
+                        "type": "origins:damage",
+                        "amount": 4,
+                        "source": {
+                            "name": "explosion",
+                            "bypasses_armor": true,
+                            "unblockable": true
+                        },
+                        "damage_type": "explosion"
+                    }
+                },
+                {
+                    "type": "origins:spawn_particles",
+                    "particle": "minecraft:explosion",
+                    "count": 1
+                },
+                {
+                    "type": "origins:play_sound",
+                    "sound": "minecraft:entity.generic.explode",
+                    "volume": 0.25,
+                    "pitch": 2
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_djumps",
+                    "change": -1,
+                    "operation": "add"
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_decaycd",
+                    "change": 40,
+                    "operation": "add"
+                }
+            ]
+        },
+        "cooldown": 0,
+        "key": {
+            "key": "key.jump"
+        }
+    },
+    "stun": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:selector_action",
+                    "selector": "@e[type=!minecraft:player]",
+                    "bientity_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:target_action",
+                                "action": {
+                                    "type": "origins:apply_effect",
+                                    "effect": {
+                                        "effect": "minecraft:slowness",
+                                        "duration": 40,
+                                        "amplifier": 100,
+                                        "show_particles": false,
+                                        "show_icon": true
+                                    }
+                                }
+                            },
+                            {
+                                "type": "origins:damage",
+                                "amount": 4,
+                                "source": {
+                                    "name": "explosion.player",
+                                    "bypasses_armor": true,
+                                    "unblockable": true
+                                },
+                                "damage_type": "explosion"
+                            }
+                        ]
+                    },
+                    "bientity_condition": {
+                        "type": "origins:distance",
+                        "comparison": "<=",
+                        "compare_to": 5
+                    }
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_heat",
+                    "change": 25,
+                    "operation": "add"
+                },
+                {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:resource",
+                        "resource": "*:*_heat",
+                        "comparison": ">=",
+                        "compare_to": 40
+                    },
+                    "if_action": {
+                        "type": "origins:damage",
+                        "amount": 4,
+                        "source": {
+                            "name": "explosion",
+                            "bypasses_armor": true,
+                            "unblockable": true
+                        },
+                        "damage_type": "explosion"
+                    }
+                },
+                {
+                    "type": "origins:spawn_particles",
+                    "particle": "minecraft:explosion_emitter",
+                    "count": 1
+                },
+                {
+                    "type": "origins:play_sound",
+                    "sound": "minecraft:entity.generic.explode",
+                    "volume": 1,
+                    "pitch": 1
+                },
+                {
+                    "type": "origins:apply_effect",
+                    "effect": {
+                        "effect": "minecraft:slowness",
+                        "duration": 40,
+                        "amplifier": 2,
+                        "show_particles": false,
+                        "show_icon": true
+                    }
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_decaycd",
+                    "change": 60,
+                    "operation": "add"
+                }
+            ]
+        },
+        "cooldown": 0,
+        "key": {
+            "key": "key.origins.primary_active"
+        }
+    },
+    "djumps": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1,
+        "start_value": 1
+    },
+    "djumpreset": {
+        "condition": {
+            "type": "origins:on_block"
+        },
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "*:*_djumps",
+            "change": 1,
+            "operation": "add"
+        }
+    },
+    "decaycd": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 100,
+        "start_value": 0
+    },
+    "decaycddecay": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "*:*_decaycd",
+            "change": -1,
+            "operation": "add"
+        }
+    }
+}

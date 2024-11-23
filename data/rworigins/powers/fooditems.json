@@ -1,0 +1,69 @@
+{
+    "name": "Endless Pocket",
+    "description": "You can spend food to regurgitate a random item.",
+    "type": "origins:active_self",
+    "entity_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:choice",
+                "actions": [
+                    {
+                        "weight": 3,
+                        "element": {
+                            "type": "origins:give",
+                            "stack": {
+                                "item": "minecraft:stick",
+                                "amount": 1
+                            }
+                        }
+                    },
+                    {
+                        "weight": 3,
+                        "element": {
+                            "type": "origins:give",
+                            "stack": {
+                                "item": "minecraft:string"
+                            }
+                        }
+                    },
+                    {
+                        "weight": 1,
+                        "element": {
+                            "type": "origins:give",
+                            "stack": {
+                                "item": "minecraft:fire_charge"
+                            }
+                        }
+                    },
+                    {
+                        "weight": 1,
+                        "element": {
+                            "type": "origins:give",
+                            "stack": {
+                                "item": "minecraft:iron_ingot"
+                            }
+                        }
+                    },
+                    {
+                        "weight": 2,
+                        "element": {
+                            "type": "origins:give",
+                            "stack": {
+                                "item": "minecraft:oak_sapling"
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "type": "origins:exhaust",
+                "amount": 4
+            }
+        ]
+    },
+    "cooldown": 20,
+    "key": {
+        "key": "key.origins.primary_active"
+    }
+}

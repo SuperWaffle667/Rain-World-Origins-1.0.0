@@ -1,0 +1,198 @@
+{
+    "name": "Siphoning Needles",
+    "description": "You can pull needles from your tail using the action key.\n\nHitting a living creature with one of your needles gains you food.\n\nYou cannot use ranged weapons, as you make your own.",
+    "type": "origins:multiple",
+    "needlehit": {
+        "type": "origins:action_on_hit",
+        "bientity_action": {
+            "type": "origins:actor_action",
+            "action": {
+                "type": "origins:feed",
+                "food": 1,
+                "saturation": 1
+            }
+        },
+        "bientity_condition": {
+            "type": "origins:target_condition",
+            "condition": {
+                "type": "origins:living"
+            }
+        },
+        "damage_condition": {
+            "type": "origins:projectile",
+            "projectile": "minecraft:arrow"
+        },
+        "cooldown": 1
+    },
+    "needlepull": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:if_else",
+            "condition": {
+                "type": "origins:inventory",
+                "process_mode": "items",
+                "item_condition": {
+                    "inverted": true,
+                    "type": "origins:empty"
+                },
+                "slots": [],
+                "slot": "weapon.mainhand",
+                "comparison": ">",
+                "compare_to": 0
+            },
+            "if_action": {
+                "type": "origins:if_else",
+                "condition": {
+                    "type": "origins:inventory",
+                    "process_mode": "items",
+                    "item_condition": {
+                        "inverted": true,
+                        "type": "origins:empty"
+                    },
+                    "slots": [],
+                    "slot": "weapon.offhand",
+                    "comparison": ">",
+                    "compare_to": 0
+                },
+                "if_action": {
+                    "type": "origins:nothing"
+                },
+                "else_action": {
+                    "type": "origins:give",
+                    "stack": {
+                        "item": "minecraft:arrow",
+                        "tag": "{display: {Name: '{\"text\": \"Needle\"}'}, Needle: 1b}"
+                    },
+                    "preferred_slot": "offhand"
+                }
+            },
+            "else_action": {
+                "type": "origins:give",
+                "stack": {
+                    "item": "minecraft:arrow",
+                    "tag": "{display: {Name: '{\"text\": \"Needle\"}'}, Needle: 1b}"
+                },
+                "preferred_slot": "mainhand"
+            }
+        },
+        "cooldown": 20,
+        "key": {
+            "key": "key.origins.primary_active",
+            "continuous": true
+        }
+    },
+    "needlethrow": {
+        "condition": {
+            "type": "origins:or",
+            "conditions": [
+                {
+                    "type": "origins:equipped_item",
+                    "equipment_slot": "mainhand",
+                    "item_condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:nbt",
+                                "nbt": "{Needle: 1b}"
+                            },
+                            {
+                                "type": "origins:ingredient",
+                                "ingredient": {
+                                    "item": "minecraft:arrow"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "origins:equipped_item",
+                    "equipment_slot": "offhand",
+                    "item_condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:nbt",
+                                "nbt": "{Needle: 1b}"
+                            },
+                            {
+                                "type": "origins:ingredient",
+                                "ingredient": {
+                                    "item": "minecraft:arrow"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:fire_projectile",
+                    "entity_type": "minecraft:arrow",
+                    "count": 1,
+                    "speed": 1.5,
+                    "divergence": 0,
+                    "projectile_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "data modify entity @s pickup set value 0b"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "data modify entity @s needle set value 1b"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "origins:modify_inventory",
+                    "inventory_type": "inventory",
+                    "item_action": {
+                        "type": "origins:consume",
+                        "amount": 1
+                    },
+                    "item_condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:nbt",
+                                "nbt": "{Needle: 1b}"
+                            },
+                            {
+                                "type": "origins:ingredient",
+                                "ingredient": {
+                                    "item": "minecraft:arrow"
+                                }
+                            }
+                        ]
+                    },
+                    "slots": [
+                        "weapon.mainhand",
+                        "weapon.offhand"
+                    ],
+                    "process_mode": "items",
+                    "limit": 1
+                }
+            ]
+        },
+        "cooldown": 10,
+        "key": {
+            "key": "key.use",
+            "continuous": true
+        }
+    },
+    "nobow": {
+        "type": "origins:prevent_item_use",
+        "item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "tag": "origins:ranged_weapons"
+            }
+        }
+    }
+}

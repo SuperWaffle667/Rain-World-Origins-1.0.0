@@ -1,0 +1,17 @@
+{
+    "name": "The Spearmaster",
+    "description": "An abnormality who feeds using needles pulled from its body. A traveller from a far away land; A feeling in your depths sets you out once again, messenger...",
+    "powers": [
+        "rworigins:scug",
+        "rworigins:ptsd",
+        "rworigins:needles",
+        "rworigins:lessmelee",
+        "rworigins:nofood",
+        "rworigins:durable"
+    ],
+    "icon": {
+        "item": "minecraft:arrow",
+        "amount": 1
+    },
+    "impact": 2
+}

@@ -1,0 +1,38 @@
+{
+    "name": "Enemy of the people",
+    "description": "Villagers refuse to trade with you, and all neutral mobs are immediately hostile.",
+    "type": "origins:multiple",
+    "notrades": {
+        "type": "origins:prevent_entity_use",
+        "bientity_condition": {
+            "type": "origins:target_condition",
+            "condition": {
+                "type": "origins:entity_type",
+                "entity_type": "minecraft:villager"
+            }
+        }
+    },
+    "mobaggro": {
+        "type": "origins:action_over_time",
+        "interval": 100,
+        "entity_action": {
+            "type": "origins:area_of_effect",
+            "radius": 20,
+            "bientity_condition": {
+                "type": "origins:target_condition",
+                "condition": {
+                    "type": "origins:in_tag",
+                    "tag": "rworigins:neutral"
+                }
+            },
+            "bientity_action": {
+                "type": "origins:damage",
+                "amount": 0,
+                "source": {
+                    "name": "aggro",
+                    "bypasses_armor": true
+                }
+            }
+        }
+    }
+}

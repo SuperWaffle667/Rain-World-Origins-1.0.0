@@ -1,0 +1,10 @@
+{
+    "origins": [
+        "rworigins:sait",
+        "rworigins:riv",
+        "rworigins:arti",
+        "rworigins:gourm",
+        "rworigins:spearm"
+    ],
+    "enabled": true
+}

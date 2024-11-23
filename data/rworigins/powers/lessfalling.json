@@ -1,0 +1,20 @@
+{
+    "name": "Strong Knees",
+    "description": "You take less fall damage.",
+    "type": "origins:modify_damage_taken",
+    "damage_condition": {
+        "type": "origins:from_falling"
+    },
+    "modifiers": [
+        {
+            "operation": "addition",
+            "value": -4,
+            "name": "Origin"
+        },
+        {
+            "operation": "multiply_base",
+            "value": -0.125,
+            "name": "Origin"
+        }
+    ]
+}

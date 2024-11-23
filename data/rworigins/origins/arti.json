@@ -1,0 +1,21 @@
+{
+    "name": "The Artificer",
+    "description": "A fierce combatant, master of pyrotechnics and explosives. Keen to move in the foodchain, your journey will surely be one lined with constant bloodshed and warfare.",
+    "powers": [
+        "rworigins:scug",
+        "rworigins:ptsd",
+        "rworigins:explosivejump",
+        "rworigins:gunpowder",
+        "rworigins:throwbomb",
+        "rworigins:lessfalling",
+        "rworigins:durable",
+        "rworigins:badswim",
+        "rworigins:enemy",
+        "origins:carnivore"
+    ],
+    "icon": {
+        "item": "minecraft:fire_charge",
+        "amount": 1
+    },
+    "impact": 2
+}

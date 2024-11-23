@@ -1,0 +1,19 @@
+{
+    "name": "Pacifist",
+    "description": "You cannot use weapons or deal damage of any kind.",
+    "type": "origins:multiple",
+    "key0": {
+        "type": "origins:modify_damage_dealt",
+        "modifier": {
+            "operation": "set_total",
+            "value": 0
+        }
+    },
+    "key1": {
+        "type": "origins:modify_projectile_damage",
+        "modifier": {
+            "operation": "set_total",
+            "value": 0
+        }
+    }
+}

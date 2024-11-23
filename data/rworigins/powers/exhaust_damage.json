@@ -1,0 +1,14 @@
+{
+    "name": "Inertia",
+    "description": "You deal signifigantly more damage, but every attack exhausts for a lot more.",
+    "type": "origins:modify_damage_dealt",
+    "modifier": {
+        "operation": "multiply_base",
+        "value": 2,
+        "name": "Origin"
+    },
+    "self_action": {
+        "type": "origins:exhaust",
+        "amount": 16
+    }
+}

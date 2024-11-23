@@ -1,0 +1,30 @@
+{
+    "name": "Hypothermia",
+    "description": "You freeze in water or cold areas.",
+    "condition": {
+        "type": "origins:or",
+        "conditions": [
+            {
+                "type": "origins:biome",
+                "condition": {
+                    "type": "origins:temperature",
+                    "comparison": "<=",
+                    "compare_to": 0.15
+                }
+            },
+            {
+                "type": "origins:in_block_anywhere",
+                "block_condition": {
+                    "type": "origins:fluid",
+                    "fluid_condition": {
+                        "type": "origins:in_tag",
+                        "tag": "minecraft:water"
+                    }
+                },
+                "comparison": ">=",
+                "compare_to": 1
+            }
+        ]
+    },
+    "type": "origins:freeze"
+}

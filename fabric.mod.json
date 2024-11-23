@@ -1,0 +1,16 @@
+{
+    "schemaVersion": 1,
+    "environment": "*",
+    "depends": {
+        "fabric-api-base": "*",
+        "fabric": "*",
+        "minecraft": ">=1.20.0 <=1.20.1",
+        "origins": ">=1.10.0"
+    },
+    "name": "Rain World Origins",
+    "id": "rworigins",
+    "version": "1.0.0",
+    "description": "",
+    "license": "Unknown",
+    "icon": "pack.png"
+}

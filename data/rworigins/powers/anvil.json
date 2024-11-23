@@ -1,0 +1,26 @@
+{
+    "name": "Anvil Weight",
+    "description": "You are nearly as heavy as several blocks of iron... Think about that for a moment. You also take less fall damage (hint, hint)",
+    "type": "origins:modify_damage_taken",
+    "damage_condition": {
+        "type": "origins:from_falling"
+    },
+    "modifier": {
+        "operation": "multiply_base",
+        "value": -0.5
+    },
+    "self_action": {
+        "type": "origins:area_of_effect",
+        "radius": 2,
+        "bientity_action": {
+            "type": "origins:damage",
+            "amount": 20,
+            "source": {
+                "name": "cramming",
+                "bypasses_armor": true,
+                "unblockable": true
+            },
+            "damage_type": "falling_anvil"
+        }
+    }
+}

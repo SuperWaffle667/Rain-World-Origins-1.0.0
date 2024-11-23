@@ -1,0 +1,24 @@
+{
+    "name": "Extended Breath",
+    "description": "You can breathe underwater for much longer, but not forever.",
+    "badges": [
+        {
+            "type": "origins:sprite",
+            "sprite": "origins:textures/gui/badge/info.png"
+        }
+    ],
+    "condition": {
+        "type": "origins:submerged_in",
+        "fluid": "minecraft:water"
+    },
+    "type": "origins:action_over_time",
+    "interval": 1,
+    "entity_action": {
+        "type": "origins:chance",
+        "chance": 0.75,
+        "action": {
+            "type": "origins:gain_air",
+            "value": 1
+        }
+    }
+}

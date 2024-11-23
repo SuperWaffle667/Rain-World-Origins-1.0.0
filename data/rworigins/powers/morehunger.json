@@ -1,0 +1,10 @@
+{
+    "name": "Lots To Feed",
+    "description": "You need more food to survive.",
+    "type": "origins:modify_exhaustion",
+    "modifier": {
+        "operation": "multiply_base",
+        "value": 1,
+        "name": "origin"
+    }
+}
